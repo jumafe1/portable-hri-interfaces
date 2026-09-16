@@ -1,0 +1,11 @@
+%YAML 1.1
+---
+name: Speak
+spec_version: 1.1
+spec_type: interface
+description: "Pronounce text through the active speech provider."
+interface:
+  services:
+    "/hri/speak":
+      type: "hri_capability_interfaces/srv/Speak"
+      description: "Pronounce text and report which provider handled the request."

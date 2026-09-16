@@ -1,0 +1,11 @@
+# Text to pronounce.
+string text
+# BCP 47 language tag or provider-supported language name. Empty uses the provider default.
+string language
+---
+# True when the selected provider completed the request.
+bool success
+# Identifier of the provider that handled the request.
+string provider
+# Human-readable result or error detail.
+string message
