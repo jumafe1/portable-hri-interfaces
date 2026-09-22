@@ -1,0 +1,15 @@
+# Relative target in the robot's initial ground-plane frame, in meters and radians.
+float64 x_m
+float64 y_m
+float64 theta_rad
+---
+# True only when the provider verifies that the requested target was reached.
+bool success
+# Identifier of the provider that handled the request.
+string provider
+# Human-readable result or error detail.
+string message
+# Motion measured by the provider in the same initial robot frame.
+float64 achieved_x_m
+float64 achieved_y_m
+float64 achieved_theta_rad

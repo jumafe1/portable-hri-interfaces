@@ -16,6 +16,7 @@
   <export>
     <build_type>ament_cmake</build_type>
     <capability_interface>capability_interfaces/DetectPeople.yaml</capability_interface>
+    <capability_interface>capability_interfaces/MoveRelative.yaml</capability_interface>
     <capability_interface>capability_interfaces/Speak.yaml</capability_interface>
   </export>
 </package>

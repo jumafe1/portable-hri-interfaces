@@ -7,6 +7,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PersonDetection2D.msg"
   "srv/DetectPeople.srv"
+  "srv/MoveRelative.srv"
   "srv/Speak.srv"
 )
 

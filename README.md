@@ -8,8 +8,8 @@ plataformas.
 
 ### `hri_capability_interfaces`
 
-Define los contratos `Speak` y `DetectPeople` y exporta sus descripciones como
-interfaces de Capabilities2.
+Define los contratos `Speak`, `DetectPeople` y `MoveRelative` y exporta sus
+descripciones como interfaces de Capabilities2.
 
 #### `Speak`
 
@@ -40,6 +40,15 @@ ausencia de datos, un frame vencido o una solicitud inválida. Cada detección
 incluye confianza, identificador de seguimiento opcional y cuadro 2D en
 píxeles, sin exponer mensajes específicos de YOLO.
 
+#### `MoveRelative`
+
+El punto de acceso común es `/hri/move_relative`. La solicitud expresa un
+objetivo relativo al marco inicial del robot mediante `x_m`, `y_m` y
+`theta_rad`. La respuesta distingue aceptación de objetivo alcanzado: solo es
+exitosa cuando el proveedor verifica el movimiento y devuelve los tres
+desplazamientos medidos. Los proveedores pueden aplicar límites más
+conservadores según la morfología y condiciones de seguridad de cada robot.
+
 ## Compilación
 
 Desde la raíz de un workspace ROS 2:
@@ -54,6 +63,7 @@ Para inspeccionar el contrato generado:
 ```bash
 ros2 interface show hri_capability_interfaces/srv/Speak
 ros2 interface show hri_capability_interfaces/srv/DetectPeople
+ros2 interface show hri_capability_interfaces/srv/MoveRelative
 ```
 
 ## Licencia

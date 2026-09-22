@@ -1,0 +1,11 @@
+%YAML 1.1
+---
+name: MoveRelative
+spec_version: 1.1
+spec_type: interface
+description: "Move by a relative ground-plane displacement and report the measured result."
+interface:
+  services:
+    "/hri/move_relative":
+      type: "hri_capability_interfaces/srv/MoveRelative"
+      description: "Request a relative planar pose without exposing a robot-specific motion API."
