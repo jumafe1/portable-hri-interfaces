@@ -1,0 +1,11 @@
+%YAML 1.1
+---
+name: DetectPeople
+spec_version: 1.1
+spec_type: interface
+description: "Return fresh two-dimensional person detections from the active perception provider."
+interface:
+  services:
+    "/hri/detect_people":
+      type: "hri_capability_interfaces/srv/DetectPeople"
+      description: "Return zero or more person detections without exposing provider-specific messages."

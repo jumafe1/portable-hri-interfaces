@@ -8,10 +8,13 @@ plataformas.
 
 ### `hri_capability_interfaces`
 
-Define el servicio `Speak` y exporta su descripción como interfaz de
-Capabilities2. El punto de acceso común es `/hri/speak`; el proveedor activo es
-responsable de traducir esa solicitud a la interfaz concreta del robot o motor
-de voz.
+Define los contratos `Speak` y `DetectPeople` y exporta sus descripciones como
+interfaces de Capabilities2.
+
+#### `Speak`
+
+El punto de acceso común es `/hri/speak`; el proveedor activo es responsable de
+traducir esa solicitud a la interfaz concreta del robot o motor de voz.
 
 Solicitud:
 
@@ -24,6 +27,18 @@ Respuesta:
 - `success`: indica si el proveedor completó la solicitud.
 - `provider`: identifica el proveedor que atendió la solicitud.
 - `message`: detalle legible del resultado o error.
+
+#### `DetectPeople`
+
+El punto de acceso común es `/hri/detect_people`. La solicitud permite elegir
+la confianza mínima y la edad máxima del último frame. Valores menores o
+iguales a cero conservan los valores predeterminados del proveedor.
+
+Una respuesta exitosa significa que se evaluó un frame reciente; `people`
+puede estar vacío cuando no hay personas. Una respuesta fallida distingue la
+ausencia de datos, un frame vencido o una solicitud inválida. Cada detección
+incluye confianza, identificador de seguimiento opcional y cuadro 2D en
+píxeles, sin exponer mensajes específicos de YOLO.
 
 ## Compilación
 
@@ -38,6 +53,7 @@ Para inspeccionar el contrato generado:
 
 ```bash
 ros2 interface show hri_capability_interfaces/srv/Speak
+ros2 interface show hri_capability_interfaces/srv/DetectPeople
 ```
 
 ## Licencia

@@ -1,0 +1,13 @@
+# Minimum confidence accepted by the caller. Values <= 0 use the provider default.
+float64 minimum_confidence
+# Maximum age in seconds of the latest detection frame. Values <= 0 use the provider default.
+float64 maximum_age_sec
+---
+# True when a fresh detection frame was evaluated, including frames with no people.
+bool success
+# People in the latest frame that satisfy the requested confidence threshold.
+hri_capability_interfaces/PersonDetection2D[] people
+# Identifier of the provider that handled the request.
+string provider
+# Human-readable result or error detail.
+string message
