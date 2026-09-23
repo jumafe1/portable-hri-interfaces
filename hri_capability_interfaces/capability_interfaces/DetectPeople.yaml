@@ -3,8 +3,12 @@
 name: DetectPeople
 spec_version: 1.1
 spec_type: interface
-description: "Return fresh two-dimensional person detections from the active perception provider."
+description: "Publish fresh two-dimensional person detections and support point-in-time queries from the active perception provider."
 interface:
+  topics:
+    "/hri/people":
+      type: "hri_capability_interfaces/msg/PersonDetection2DArray"
+      description: "Continuous normalized person detections. An empty array represents a processed frame without people."
   services:
     "/hri/detect_people":
       type: "hri_capability_interfaces/srv/DetectPeople"

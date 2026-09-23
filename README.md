@@ -30,9 +30,16 @@ Respuesta:
 
 #### `DetectPeople`
 
-El punto de acceso común es `/hri/detect_people`. La solicitud permite elegir
-la confianza mínima y la edad máxima del último frame. Valores menores o
-iguales a cero conservan los valores predeterminados del proveedor.
+El flujo común continuo es `/hri/people`, de tipo
+`hri_capability_interfaces/msg/PersonDetection2DArray`. Cada mensaje representa
+un frame ya evaluado: `people=[]` es un resultado válido sin personas, mientras
+que la ausencia de mensajes recientes se interpreta mediante la edad del
+`header`. El campo `provider` conserva trazabilidad sin filtrar tipos propios
+del motor de visión a la aplicación.
+
+También existe la consulta puntual `/hri/detect_people`. La solicitud permite
+elegir la confianza mínima y la edad máxima del último frame. Valores menores
+o iguales a cero conservan los valores predeterminados del proveedor.
 
 Una respuesta exitosa significa que se evaluó un frame reciente; `people`
 puede estar vacío cuando no hay personas. Una respuesta fallida distingue la
@@ -63,6 +70,7 @@ Para inspeccionar el contrato generado:
 ```bash
 ros2 interface show hri_capability_interfaces/srv/Speak
 ros2 interface show hri_capability_interfaces/srv/DetectPeople
+ros2 interface show hri_capability_interfaces/msg/PersonDetection2DArray
 ros2 interface show hri_capability_interfaces/srv/MoveRelative
 ```
 
