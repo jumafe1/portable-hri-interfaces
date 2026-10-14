@@ -1,0 +1,14 @@
+%YAML 1.1
+---
+name: MoveVelocity
+spec_version: 1.1
+spec_type: interface
+description: "Command planar body-frame velocity as a live stream; no distance or physical completion is implied."
+interface:
+  topics:
+    "/hri/cmd_vel":
+      type: "geometry_msgs/msg/Twist"
+      description: "Input: linear.x/y in m/s, angular.z in rad/s. Other axes must be zero. Stream fresh commands; zero requests a stop."
+    "/hri/move_velocity/status":
+      type: "std_msgs/msg/String"
+      description: "Output: periodic provider state. ready, moving, stopped, command_timeout, invalid_command, backend_unavailable. State describes commands, not measured physical motion."
