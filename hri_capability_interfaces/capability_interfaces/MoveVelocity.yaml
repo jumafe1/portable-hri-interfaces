@@ -11,4 +11,4 @@ interface:
       description: "Input: linear.x/y in m/s, angular.z in rad/s. Other axes must be zero. Stream fresh commands; zero requests a stop."
     "/hri/move_velocity/status":
       type: "std_msgs/msg/String"
-      description: "Output: periodic provider state. ready, moving, stopped, command_timeout, invalid_command, backend_unavailable. State describes commands, not measured physical motion."
+      description: "Output: periodic provider state. awaiting_velocity_source, graph_settling, ready, moving, stopped, command_timeout, invalid_command, backend_unavailable, multiple_velocity_publishers, velocity_source_changed. Publisher/source conflicts latch until release. State describes commands, not measured physical motion."
