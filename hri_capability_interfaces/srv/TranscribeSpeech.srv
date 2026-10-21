@@ -1,0 +1,12 @@
+# Capture a bounded FUTURE audio window; no historical microphone buffer.
+float64 duration_sec
+# ISO language code, or empty for automatic detection.
+string language
+# Optional client correlation token; provider generates one if empty.
+string request_id
+---
+# Admission only. Completion arrives on /hri/speech/transcript.
+bool accepted
+string request_id
+string provider
+string message

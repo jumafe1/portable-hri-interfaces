@@ -8,6 +8,10 @@ find_package(std_msgs REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PersonDetection2D.msg"
   "msg/PersonDetection2DArray.msg"
+  "msg/CameraOrientation.msg"
+  "srv/OrientCamera.srv"
+  "msg/SpeechTranscript.msg"
+  "srv/TranscribeSpeech.srv"
   "srv/DetectPeople.srv"
   "srv/MoveRelative.srv"
   "srv/Speak.srv"

@@ -1,0 +1,15 @@
+%YAML 1.1
+---
+name: OrientCamera
+spec_version: 1.1
+spec_type: interface
+description: "Optional measured camera-mount orientation; neutral-relative elevation, not optical extrinsics."
+interface:
+  services:
+    "/hri/camera/orient":
+      type: "hri_capability_interfaces/srv/OrientCamera"
+      description: "Request elevation or hold measured pose. Acceptance does not prove arrival."
+  topics:
+    "/hri/camera/orientation":
+      type: "hri_capability_interfaces/msg/CameraOrientation"
+      description: "Measured mount pose and health. Consumers must check freshness, identity, ready and moving."

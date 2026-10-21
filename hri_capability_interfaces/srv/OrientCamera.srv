@@ -1,0 +1,9 @@
+# Neutral-relative camera mount elevation in radians, positive upward.
+# This is NOT an absolute optical-frame angle. Provider reports support/limits.
+float64 elevation
+# Hold the latest measured pose instead of applying elevation.
+bool hold
+---
+# Accepted means command accepted, not physically reached.
+bool accepted
+string message

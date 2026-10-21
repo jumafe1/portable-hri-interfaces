@@ -1,0 +1,15 @@
+%YAML 1.1
+---
+name: TranscribeSpeech
+spec_version: 1.1
+spec_type: interface
+description: "Explicit bounded audio capture and asynchronous speech-to-text; no conversational response."
+interface:
+  services:
+    "/hri/speech/transcribe":
+      type: "hri_capability_interfaces/srv/TranscribeSpeech"
+      description: "Request a future capture window. accepted is admission, not transcription success."
+  topics:
+    "/hri/speech/transcript":
+      type: "hri_capability_interfaces/msg/SpeechTranscript"
+      description: "Correlated completion, text or explicit error. Not an authenticated command or measured confidence."
