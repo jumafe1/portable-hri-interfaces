@@ -1,9 +1,16 @@
-# Capture a bounded FUTURE audio window; no historical microphone buffer.
+# Capture FUTURE audio only. For continuous=false, one bounded window.
+# For continuous=true, maximum duration of EACH VAD segment (1..10 seconds).
 float64 duration_sec
 # ISO language code, or empty for automatic detection.
 string language
 # Optional client correlation token; provider generates one if empty.
 string request_id
+# Opt-in continuous capture until capability release/lease loss. Default false.
+# Multiple transcripts share request_id and have increasing segment_index.
+bool continuous
+# Continuous mode only: endpoint silence (0 => 0.8 s; otherwise 0.2..2 s,
+# strictly less than duration_sec). Silence alone does not produce transcripts.
+float64 silence_sec
 ---
 # Admission only. Completion arrives on /hri/speech/transcript.
 bool accepted

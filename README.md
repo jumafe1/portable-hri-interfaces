@@ -79,6 +79,34 @@ indefinidamente una orden derivada de percepción caducada.
 Los mecanismos de parada deben verificarse por plataforma. Un watchdog dentro
 del proveedor no protege por sí solo ante su caída, la del driver o pérdida de red.
 
+#### `TranscribeSpeech`
+
+`/hri/speech/transcribe` admite una captura futura; nunca recupera audio previo
+a la solicitud. Con `continuous=false` (predeterminado) conserva una ventana de
+0.5 a 10 s y un resultado asíncrono en `/hri/speech/transcript`.
+
+Con `continuous=true`, `duration_sec` limita cada fragmento a entre 1 y 10 s,
+y `silence_sec` define la pausa que cierra una frase (0 significa 0.8 s;
+valores explícitos entre 0.2 y 2 s, menores que `duration_sec`). La sesión dura
+hasta liberar la capacidad, perder la autorización o un error terminal. El
+proveedor debe acotar buffers/cola y comunicar pérdidas, sin acumular audio
+indefinidamente. Adquirir la capacidad por sí solo no inicia captura.
+
+Los resultados conservan el `request_id` público. `segment_index` es creciente
+en una sesión continua (puede tener huecos por descartes); vale 0 para una
+ventana única o error terminal. `final=true` termina la solicitud; las frases
+continuas tienen `final=false`. `header` corresponde al audio, no al fin de la
+inferencia. El texto no constituye una orden autenticada ni una confianza medida.
+
+`/hri/speech/capture_status` (`SpeechCaptureStatus`) informa periódicamente
+`listening`, `speech`, `processing` o `speech_and_processing`, junto con el
+número de frases pendientes y descartadas. No contiene audio ni texto. Permite
+distinguir silencio legítimo de un worker perdido. El proveedor Whisper lo
+emite cada 0.25 s y el proxy termina una sesión tras 2 s sin heartbeat.
+
+Esta ampliación cambia las definiciones ROS: reconstruir interfaces, proveedor
+Whisper y aplicación, y reiniciar sus procesos antes de usarlas conjuntamente.
+
 ## Compilación
 
 Desde la raíz de un workspace ROS 2:

@@ -11,6 +11,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/CameraOrientation.msg"
   "srv/OrientCamera.srv"
   "msg/SpeechTranscript.msg"
+  "msg/SpeechCaptureStatus.msg"
   "srv/TranscribeSpeech.srv"
   "srv/DetectPeople.srv"
   "srv/MoveRelative.srv"
